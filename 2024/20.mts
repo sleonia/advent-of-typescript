@@ -2,16 +2,16 @@ import type { Expect, Equal } from "type-testing";
 
 type AnalyzeScope<
   T extends string,
-  Declated extends string[] = [],
+  Declared extends string[] = [],
   Used extends string[] = [],
 > = T extends `${" " | "\n" | "\t" | "\r"}${infer Rest}`
-  ? AnalyzeScope<Rest, Declated, Used>
+  ? AnalyzeScope<Rest, Declared, Used>
   : T extends `${string} ${infer VariableName} = "${string}";${infer Tail}`
-    ? AnalyzeScope<Tail, [...Declated, VariableName], Used>
+    ? AnalyzeScope<Tail, [...Declared, VariableName], Used>
     : T extends `${string}(${infer UsedVariable});${infer Tail}`
-      ? AnalyzeScope<Tail, Declated, [...Used, UsedVariable]>
+      ? AnalyzeScope<Tail, Declared, [...Used, UsedVariable]>
       : {
-          declared: Declated;
+          declared: Declared;
           used: Used;
         };
 
