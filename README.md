@@ -1,5 +1,7 @@
 ## Advent of Typescript
 
+https://www.adventofts.com/events
+
 ```sh
 # Install
 pnpm i
