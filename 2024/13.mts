@@ -1,10 +1,8 @@
 import type { Equal, Expect } from "type-testing";
 
-type In<V> = (v: V) => V;
-
-type Demand<T, U extends In<T> = In<T>> = {
-  demand: ReturnType<U>;
-};
+interface Demand<in out T> {
+  demand: T;
+}
 
 // ------------------- Test section ---------------------
 
